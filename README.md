@@ -224,4 +224,27 @@ Set the app:errorEnabled attribute to true on the Password TextInputLayout eleme
 ## 4. Add buttons
 <img width="300" alt="スクリーンショット 2023-03-23 21 09 07" src="https://user-images.githubusercontent.com/47273077/227199736-19e7991f-8485-4f95-b715-f76a01c200d7.gif">
 
+```xml
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/shr_bottoms_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_button"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toStartOf="@+id/next_button"
+                android:layout_toLeftOf="@id/next_button"
+                android:text="@string/shr_button_cancel"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+```
 
