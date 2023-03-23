@@ -248,3 +248,5 @@ Set the app:errorEnabled attribute to true on the Password TextInputLayout eleme
     </LinearLayout>
 ```
 
+## 5. Navigate to the next Fragment
+https://codelabs.developers.google.com/codelabs/mdc-101-kotlin?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-development-with-kotlin-13%3Fhl%3Dja#4
