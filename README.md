@@ -194,10 +194,13 @@ shr_login_fragment.xml
 </ScrollView>
 ```
 
-## Add input validation
+### Add input validation
 * TextInputLayout components provide built-in error feedback functionality.
 Set the app:errorEnabled attribute to true on the Password TextInputLayout element. This will add extra padding for the error message underneath the text field.
 * Set the android:inputType attribute to "textPassword" on the Password TextInputEditText element. This will hide the input text in the password field.
+
+
+<img width="300" alt="スクリーンショット 2023-03-23 20 19 08" src="https://user-images.githubusercontent.com/47273077/227192359-52edec0e-3f54-4092-aa92-6cb03abd68a0.gif">
 
 ```xml
  <com.google.android.material.textfield.TextInputLayout
@@ -218,4 +221,7 @@ Set the app:errorEnabled attribute to true on the Password TextInputLayout eleme
 
 ```
 
-<img width="300" alt="スクリーンショット 2023-03-23 20 19 08" src="https://user-images.githubusercontent.com/47273077/227192359-52edec0e-3f54-4092-aa92-6cb03abd68a0.gif">
+## 4. Add buttons
+<img width="300" alt="スクリーンショット 2023-03-23 21 09 07" src="https://user-images.githubusercontent.com/47273077/227199736-19e7991f-8485-4f95-b715-f76a01c200d7.gif">
+
+
