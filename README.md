@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NavigationHost {
 ```
 
 LoginFragment.kt
-```ky
+```kt
 class LoginFragment : Fragment() {
 
     override fun onCreateView(
