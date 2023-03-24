@@ -506,3 +506,112 @@ class ProductGridFragment : Fragment() {
     </com.google.android.material.card.MaterialCardView>
 </FrameLayout>
 ```
+
+### 5. Create a grid of cards
+<img width="300" alt="スクリーンショット 2023-03-24 17 05 06" src="https://user-images.githubusercontent.com/47273077/227460972-69c936c6-c49d-423d-8aea-15dcba887402.png">
+
+shr_product_grid_fragment.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductGridFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar"
+            style="@style/Widget.Shrine.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/shr_menu"
+            app:title="@string/shr_app_name"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/productGridBackgroundColor"
+        android:paddingLeft="@dimen/shr_product_grid_spacing"
+        android:paddingRight="@dimen/shr_product_grid_spacing"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
+```
+
+ProductGridFragment
+```kt
+class ProductGridFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.shr_product_grid_fragment, container, false)
+
+        (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
+
+        view.recycler_view.setHasFixedSize(true)
+        view.recycler_view.layoutManager = GridLayoutManager(
+            context,
+            2,
+            RecyclerView.VERTICAL,
+            false)
+        val adapter = ProductCardRecyclerViewAdapter(ProductEntry.initProductEntryList(resources))
+        view.recycler_view.adapter = adapter
+        val largePadding = resources.getDimensionPixelSize(R.dimen.shr_product_grid_spacing)
+        val smallPadding = resources.getDimensionPixelSize(R.dimen.shr_product_grid_spacing_small)
+        view.recycler_view.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
+        return  view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, menuInflater)
+    }
+}
+```
+
+ProductCardRecyclerViewAdapter
+```kt
+/**
+ * Adapter used to show a simple grid of products.
+ */
+class ProductCardRecyclerViewAdapter(private val productList: List<ProductEntry>) : RecyclerView.Adapter<ProductCardViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductCardViewHolder {
+        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.shr_product_card, parent, false)
+        return ProductCardViewHolder(layoutView)
+    }
+
+    override fun onBindViewHolder(holder: ProductCardViewHolder, position: Int) {
+        // TODO: Put ViewHolder binding code here in MDC-102
+    }
+
+    override fun getItemCount(): Int {
+        return productList.size
+    }
+}
+```
+
+ProductCardViewHolder
+```kt
+class ProductCardViewHolder(itemView: View) //TODO: Find and store views from itemView
+    : RecyclerView.ViewHolder(itemView)
+```
