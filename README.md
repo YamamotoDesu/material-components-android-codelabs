@@ -615,3 +615,29 @@ ProductCardViewHolder
 class ProductCardViewHolder(itemView: View) //TODO: Find and store views from itemView
     : RecyclerView.ViewHolder(itemView)
 ```
+
+### Add images and text
+<img width="300" alt="スクリーンショット 2023-03-24 17 16 36" src="https://user-images.githubusercontent.com/47273077/227463101-d18438b7-77d3-4725-bcf6-2c9dff7e74ba.png">
+
+ProductCardViewHolder
+```kt
+class ProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+   var productImage: NetworkImageView = itemView.findViewById(R.id.product_image)
+   var productTitle: TextView = itemView.findViewById(R.id.product_title)
+   var productPrice: TextView = itemView.findViewById(R.id.product_price)
+}
+```
+
+ProductCardRecyclerViewAdapter
+```kt
+    override fun onBindViewHolder(holder: ProductCardViewHolder, position: Int) {
+        if (position < productList.size) {
+            val product = productList[position]
+            holder.productTitle.text = product.title
+            holder.productPrice.text = product.price
+            ImageRequester.setImageFromUrl(holder.productImage, product.url)
+        }
+    }
+```
+
