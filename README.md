@@ -386,3 +386,7 @@ class LoginFragment : Fragment() {
     }
 }
 ```
+
+The false parameter in navigateTo() tells the activity to not add the current fragment to the backstack, so the user will not be able to return to the login screen using their back key.
+
+
