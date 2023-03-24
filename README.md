@@ -389,4 +389,56 @@ class LoginFragment : Fragment() {
 
 The false parameter in navigateTo() tells the activity to not add the current fragment to the backstack, so the user will not be able to return to the login screen using their back key.
 
+## [MDC-102 Android:Material Structure and Layout (Kotlin)](https://codelabs.developers.google.com/codelabs/mdc-102-kotlin/#0)
 
+## 3. Add a top app bar
+
+shr_product_grid_fragment.xml
+```kt
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductGridFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar"
+            style="@style/Widget.Shrine.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/shr_menu"
+            app:title="@string/shr_app_name"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+</FrameLayout>
+```
+
+ProductGridFragment.kt
+```kt
+class ProductGridFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.shr_product_grid_fragment, container, false)
+
+        (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
+        return  view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.shr_toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, menuInflater)
+    }
+}
+```
