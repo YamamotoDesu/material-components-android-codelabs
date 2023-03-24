@@ -249,4 +249,140 @@ Set the app:errorEnabled attribute to true on the Password TextInputLayout eleme
 ```
 
 ## 5. Navigate to the next Fragment
-https://codelabs.developers.google.com/codelabs/mdc-101-kotlin?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-development-with-kotlin-13%3Fhl%3Dja#4
+
+<img width="300" alt="スクリーンショット 2023-03-24 13 55 24" src="https://user-images.githubusercontent.com/47273077/227427919-429e94ff-b290-4061-9034-21d8aaf270db.png">
+
+
+shr_login_fragment.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/loginPageBackgroundColor"
+    tools:context=".LoginFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/shr_logo"
+            android:contentDescription="@string/shr_logo_content_description"  />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="132dp"
+            android:text="@string/shr_app_name"
+            android:textAllCaps="true"
+            android:textSize="16sp" />
+
+        <!-- Snippet from "Add text fields" section goes here. -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/shr_hint_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Snippet from "Add buttons" section goes here. -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/shr_hint_password"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/shr_bottoms_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_button"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_toStartOf="@+id/next_button"
+                android:layout_toLeftOf="@id/next_button"
+                android:text="@string/shr_button_cancel"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+```
+
+LoginFragment.kt
+```kt
+class LoginFragment : Fragment() {
+
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+
+        // Snippet from "Navigate to the next Fragment" section goes here.
+
+        val view = inflater.inflate(R.layout.shr_login_fragment, container, false)
+
+        view.next_button.setOnClickListener {
+            if (!isPasswordValid(password_edit_text.text!!)) {
+                password_text_input.error = getString(R.string.shr_error_password)
+            } else {
+                password_text_input.error = null
+
+                (activity as NavigationHost).navigateTo(ProductGridFragment(), false)
+            }
+
+            view.password_edit_text.setOnKeyListener { _, _, _ ->
+                if (isPasswordValid(password_edit_text.text!!)) {
+                    password_text_input.error = null
+                }
+                false
+            }
+        }
+        return view
+    }
+
+    // "isPasswordValid" from "Navigate to the next Fragment" section method goes here
+    private fun isPasswordValid(text: Editable?): Boolean {
+        return text != null && text.length >= 8
+    }
+}
+```
