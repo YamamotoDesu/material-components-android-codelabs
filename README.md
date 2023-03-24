@@ -393,6 +393,8 @@ The false parameter in navigateTo() tells the activity to not add the current fr
 
 ## 3. Add a top app bar
 
+<img width="300" alt="スクリーンショット 2023-03-24 14 34 04" src="https://user-images.githubusercontent.com/47273077/227433235-6ae6185f-70ec-47f7-b91b-1eecb9340b67.png">
+
 shr_product_grid_fragment.xml
 ```kt
 <?xml version="1.0" encoding="utf-8"?>
