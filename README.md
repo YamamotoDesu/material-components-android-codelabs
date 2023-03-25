@@ -642,3 +642,36 @@ ProductCardRecyclerViewAdapter
 ```
 
 ## [MDC-103 Android:Material Theming with Color, Elevation and Type (Kotlin)](https://codelabs.developers.google.com/codelabs/mdc-103-kotlin/#0)
+
+### 3. Change the color
+
+<img width="300" alt="スクリーンショット 2023-03-25 16 15 17" src="https://user-images.githubusercontent.com/47273077/227702931-0cd8b6b7-4bac-48bb-9fdc-a3c864bc5029.png">
+
+color.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="toolbarIconColor">@color/textColorPrimary</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFFFF</color>
+</resources>
+```
+
+style.xml
+```xml
+    <style name="Theme.Shrine" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
+```
+
+
+
