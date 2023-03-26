@@ -858,3 +858,6 @@ shr_login_fragment.xml
    android:text="@string/shr_app_name"
    android:textAppearance="@style/TextAppearance.Shrine.Title" />
 ```
+
+## 5. Adjust elevation
+### Change product grid elevation
