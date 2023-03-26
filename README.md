@@ -815,3 +815,20 @@ shr_login_fragment.xml
     </LinearLayout>
 </ScrollView>
 ```
+
+## 4. Modify typography and label style
+### Style the top app bar
+
+styles.xml
+```xml
+<style name="Widget.Shrine.Toolbar" parent="Widget.AppCompat.Toolbar">
+   <item name="android:background">?attr/colorAccent</item>
+   <item name="android:theme">@style/Theme.Shrine</item>
+   <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+   <item name="titleTextAppearance">@style/TextAppearance.Shrine.Toolbar</item>
+</style>
+
+<style name="TextAppearance.Shrine.Toolbar" parent="TextAppearance.MaterialComponents.Button">
+   <item name="android:textSize">16sp</item>
+</style>
+```
