@@ -834,3 +834,27 @@ styles.xml
    <item name="android:textSize">16sp</item>
 </style>
 ```
+
+### Style the labels
+<img width="300" alt="スクリーンショット 2023-03-26 15 57 55" src="https://user-images.githubusercontent.com/47273077/227760477-54b7ee3a-a1e3-47ba-8d47-1dfe4c9d3628.png">
+
+styles.xml
+```xml
+<style name="TextAppearance.Shrine.Title" parent="TextAppearance.MaterialComponents.Headline4">
+   <item name="textAllCaps">true</item>
+   <item name="android:textStyle">bold</item>
+   <item name="android:textColor">?android:attr/textColorPrimary</item>
+</style>
+
+```
+
+shr_login_fragment.xml
+```xml
+<TextView
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_gravity="center_horizontal"
+   android:layout_marginBottom="132dp"
+   android:text="@string/shr_app_name"
+   android:textAppearance="@style/TextAppearance.Shrine.Title" />
+```
