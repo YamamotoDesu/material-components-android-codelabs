@@ -819,6 +819,8 @@ shr_login_fragment.xml
 ## 4. Modify typography and label style
 ### Style the top app bar
 
+<img width="300" alt="スクリーンショット 2023-03-26 14 44 06" src="https://user-images.githubusercontent.com/47273077/227757647-5fd41beb-a7c5-4eae-8992-7f44d93af00e.png">
+
 styles.xml
 ```xml
 <style name="Widget.Shrine.Toolbar" parent="Widget.AppCompat.Toolbar">
