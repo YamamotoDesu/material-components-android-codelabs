@@ -907,3 +907,5 @@ shr_product_grid_fragment.xml
    app:cardElevation="0dp"
    app:cardPreventCornerOverlap="true">
 ```
+
+## [6. Change the layout](https://codelabs.developers.google.com/codelabs/mdc-103-kotlin/#5)
