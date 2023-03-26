@@ -861,3 +861,49 @@ shr_login_fragment.xml
 
 ## 5. Adjust elevation
 ### Change product grid elevation
+
+shr_product_grid_fragment.xml
+```xml
+<com.google.android.material.appbar.AppBarLayout
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   app:elevation="0dp">
+
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/app_bar"
+       style="@style/Widget.Shrine.Toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       app:navigationIcon="@drawable/shr_menu"
+       app:title="@string/shr_app_name" />
+</com.google.android.material.appbar.AppBarLayout>
+
+<androidx.core.widget.NestedScrollView
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:layout_marginTop="56dp"
+   android:background="@color/productGridBackgroundColor"
+   android:elevation="8dp"
+   android:paddingStart="@dimen/shr_product_grid_spacing"
+   android:paddingEnd="@dimen/shr_product_grid_spacing"
+   app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recycler_view"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
+
+</androidx.core.widget.NestedScrollView>
+```
+
+<img width="554" alt="スクリーンショット 2023-03-26 18 07 34" src="https://user-images.githubusercontent.com/47273077/227765960-f2e3d4cd-342e-4ee7-a3d6-c2dd6cbd50f6.png">
+
+```xml
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   app:cardBackgroundColor="@android:color/transparent"
+   app:cardElevation="0dp"
+   app:cardPreventCornerOverlap="true">
+```
