@@ -908,4 +908,3 @@ shr_product_grid_fragment.xml
    app:cardPreventCornerOverlap="true">
 ```
 
-## [6. Change the layout](https://codelabs.developers.google.com/codelabs/mdc-103-kotlin/#5)
